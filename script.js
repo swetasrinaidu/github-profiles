@@ -31,7 +31,7 @@ function showUser(user){
 }
 
 function showRepos(repos){
-    
+    if((repos.slice(0,10).filter((el)=>el.stargazer_count>0).length)>0){
     repos.sort((a,b)=>b.stargazers_count-a.stargazers_count)
         .slice(0,10)
         .forEach((el,index)=>{
@@ -42,6 +42,7 @@ function showRepos(repos){
             anchor.innerText= (index+1)+")"+" "+el.name + "---" + el.description +"---"+el.language;
             main.appendChild(anchor);
         })
+    }
 }
 
 form.addEventListener("submit",(e)=>{
